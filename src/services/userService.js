@@ -11,6 +11,20 @@ function getHeaders() {
     };
 }
 
+function getErrorMessage(data, defaultMessage) {
+    let errorMessage = data.message || defaultMessage;
+
+    if (data.errors) {
+        errorMessage += "\n\n";
+
+        Object.values(data.errors).forEach((error) => {
+            errorMessage += `• ${error}\n`;
+        });
+    }
+
+    return errorMessage;
+}
+
 export async function getUsers() {
     const response = await fetch(API_URL, {
         method: "GET",
@@ -34,7 +48,9 @@ export async function createUser(userData) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.message || "Error al crear usuario");
+        throw new Error(
+            getErrorMessage(data, "Error al crear usuario")
+        );
     }
 
     return data;
@@ -50,7 +66,9 @@ export async function updateUser(id, userData) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.message || "Error al actualizar usuario");
+        throw new Error(
+            getErrorMessage(data, "Error al actualizar usuario")
+        );
     }
 
     return data;
@@ -62,8 +80,12 @@ export async function deleteUser(id) {
         headers: getHeaders(),
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-        throw new Error("Error al eliminar usuario");
+        throw new Error(
+            getErrorMessage(data, "Error al eliminar usuario")
+        );
     }
 
     return true;
