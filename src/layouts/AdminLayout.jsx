@@ -44,7 +44,28 @@ function AdminLayout() {
                         >
                             Deportes
                         </Link>
-
+                        
+                        <Link
+                            className="nav-link"
+                            to="/admin/rooms"
+                        >
+                            Salas
+                        </Link>
+                        
+                        <Link
+                            className="nav-link"
+                            to="/admin/assignments"
+                        >
+                            Asignaciones
+                        </Link>
+                        
+                        <Link
+                            className="nav-link"
+                            to="/admin/schedules"
+                        >
+                            Horarios
+                        </Link>
+                        
                         <Link
                             className="nav-link"
                             to="/admin/users"
