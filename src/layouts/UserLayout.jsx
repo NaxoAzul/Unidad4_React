@@ -28,6 +28,14 @@ function UserLayout() {
                             Mi Perfil
                         </Link>
 
+                        <Link className="nav-link" to="/user/classes">
+                            Clases Disponibles
+                        </Link>
+                        
+                        <Link className="nav-link" to="/user/reservations">
+                            Mis Reservas
+                        </Link>
+
                         <Link className="nav-link" to="/user/dashboard">
                             Dashboard
                         </Link>

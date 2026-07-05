@@ -1,5 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import MySchedulesPage from "../pages/coach/MySchedulesPage";
+import MyClassesPage from "../pages/coach/MyClassesPage";
+import MyReservationsPage from "../pages/user/MyReservationsPage";
+import AvailableClassesPage from "../pages/user/AvailableClassesPage";
+import SchedulesPage from "../pages/admin/SchedulesPage";
+import AssignmentsPage from "../pages/admin/AssignmentsPage";
+import RoomsPage from "../pages/admin/RoomsPage";
 import SportsPage from "../pages/admin/SportsPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -40,6 +47,8 @@ function AppRoutes() {
                 >
                     <Route path="dashboard" element={<UserDashboard />} />
                     <Route path="profile" element={<Profile />} />
+                    <Route path="classes" element={<AvailableClassesPage />} />
+                    <Route path="reservations" element={<MyReservationsPage />} />
                 </Route>
 
                 <Route
@@ -54,7 +63,8 @@ function AppRoutes() {
                 >
                     <Route path="dashboard" element={<CoachDashboard />} />
                     <Route path="profile" element={<Profile />} />
-                    
+                    <Route path="my-classes" element={<MyClassesPage />} />
+                    <Route path="my-schedules" element={<MySchedulesPage />} />
                 </Route>
 
                 <Route
@@ -68,6 +78,9 @@ function AppRoutes() {
                     }
                 >
                     <Route path="sports" element ={<SportsPage />} />
+                    <Route path="rooms" element={<RoomsPage />} />
+                    <Route path="assignments" element={<AssignmentsPage />} />
+                    <Route path="schedules" element={<SchedulesPage />} />
                     <Route path="dashboard" element={<AdminDashboard />} />
                     <Route path="users" element={<UsersPage />} />
                     <Route path="profile" element={<Profile />} />

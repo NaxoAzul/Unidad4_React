@@ -28,6 +28,14 @@ function CoachLayout() {
                             Mi Perfil
                         </Link>
 
+                        <Link className="nav-link" to="/coach/my-classes">
+                            Mis Clases
+                        </Link>
+
+                        <Link className="nav-link" to="/coach/my-schedules">
+                            Mi Horario
+                        </Link>
+
                         <Link className="nav-link" to="/coach/dashboard">
                             Dashboard
                         </Link>

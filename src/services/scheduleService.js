@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api/sports";
+const API_URL = "http://localhost:3000/api/class-schedules";
 
 function getToken() {
     return localStorage.getItem("token");
@@ -24,7 +24,7 @@ function getErrorMessage(data, defaultMessage) {
     return errorMessage;
 }
 
-export async function getSports() {
+export async function getSchedules() {
     const response = await fetch(API_URL, {
         method: "GET",
         headers: getHeaders(),
@@ -33,45 +33,45 @@ export async function getSports() {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(getErrorMessage(data, "Error al obtener deportes"));
+        throw new Error(getErrorMessage(data, "Error al obtener horarios"));
     }
 
     return data;
 }
 
-export async function createSport(sportData) {
+export async function createSchedule(scheduleData) {
     const response = await fetch(API_URL, {
         method: "POST",
         headers: getHeaders(),
-        body: JSON.stringify(sportData),
+        body: JSON.stringify(scheduleData),
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(getErrorMessage(data, "Error al crear deporte"));
+        throw new Error(getErrorMessage(data, "Error al crear horario"));
     }
 
     return data;
 }
 
-export async function updateSport(id, sportData) {
+export async function updateSchedule(id, scheduleData) {
     const response = await fetch(`${API_URL}/${id}`, {
         method: "PUT",
         headers: getHeaders(),
-        body: JSON.stringify(sportData),
+        body: JSON.stringify(scheduleData),
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(getErrorMessage(data, "Error al actualizar deporte"));
+        throw new Error(getErrorMessage(data, "Error al actualizar horario"));
     }
 
     return data;
 }
 
-export async function deleteSport(id) {
+export async function deleteSchedule(id) {
     const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
         headers: getHeaders(),
@@ -80,23 +80,7 @@ export async function deleteSport(id) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(getErrorMessage(data, "Error al eliminar deporte"));
-    }
-
-    return data;
-}
-
-export async function updateSportStatus(id, status) {
-    const response = await fetch(`${API_URL}/${id}/status`, {
-        method: "PATCH",
-        headers: getHeaders(),
-        body: JSON.stringify({ status }),
-    });
-
-    const data = await response.json();
-
-    if (!response.ok) {
-        throw new Error(getErrorMessage(data, "Error al cambiar estado"));
+        throw new Error(getErrorMessage(data, "Error al eliminar horario"));
     }
 
     return data;
